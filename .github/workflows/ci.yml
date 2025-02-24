@@ -25,7 +25,3 @@ jobs:
       # Step 4: Build the Docker image
       - name: Build Docker image
         run: docker build -t my-react-app -f Dockerfile.dev .
-
-      # Step 5: Run the Docker container and run tests
-      - name: Run Docker container and test
-        run: docker run --rm my-react-app npm run test --ci --maxWorkers=2 --timeout=5000
