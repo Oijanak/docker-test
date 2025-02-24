@@ -25,4 +25,7 @@ jobs:
 
       # Step 6: Run the Docker container and test
       - name: Run Docker container and test
-        run: docker run --rm my-react-app npm run test
+        run: |
+          docker run my-react-app
+          docker exec -it my-react-app npm run test
+          docker stop my-react-app
