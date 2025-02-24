@@ -19,13 +19,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 5: Build Docker image
-      - name: Build Docker image
-        run: docker build -t my-react-app -f Dockerfile.dev .
-
       # Step 6: Run the Docker container and test
       - name: Run Docker container and test
-        run: |
-          docker run my-react-app
-          docker exec -it my-react-app npm run test
-          docker stop my-react-app
+        run: docker compose up
