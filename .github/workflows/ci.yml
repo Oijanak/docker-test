@@ -29,3 +29,9 @@ jobs:
       # Step 5: Run the Docker container and run tests
       - name: Run Docker container and test
         run: docker run --rm my-react-app npm run test --ci --maxWorkers=2
+
+      - name: exit
+        run: docker ps
+
+      - name: exit2
+        run: docker stop my-react-app
