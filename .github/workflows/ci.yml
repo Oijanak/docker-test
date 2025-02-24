@@ -1,0 +1,28 @@
+name: CI Pipeline
+
+# Trigger the workflow on push to the main branch or pull request to the main branch
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+# Jobs to run
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 5: Build Docker image
+      - name: Build Docker image
+        run: docker build -t my-react-app -f Dockerfile.dev .
+
+      # Step 6: Run the Docker container and test
+      - name: Run Docker container and test
+        run: docker run my-react-app npm run test -- --coverage
